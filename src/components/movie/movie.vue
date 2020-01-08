@@ -55,80 +55,80 @@ export default {
       radio :'',
       movieIndex: [
         {
-          url: "../../../static/fm/fengmian1.png",
-          src: "../../../static/video/01.mp4",
+          url: "./static/fm/fengmian1.png",
+          src: "./static/video/01.mp4",
           date: "2018-08-28",
           place: "临沂",
           info: "老家清晨天空",
           time: '00:15'
         },
         {
-          url: "../../../static/fm/fengmian2.png",
-          src: "../../../static/video/02.mp4",
+          url: "./static/fm/fengmian2.png",
+          src: "./static/video/02.mp4",
           date: "2018-09-04",
           place: "临沂",
           info: "老家水库风景",
           time: '00:06'
         },
         {
-          url: "../../../static/fm/fengmian3.png",
-          src: "../../../static/video/03.mp4",
+          url: "./static/fm/fengmian3.png",
+          src: "./static/video/03.mp4",
           date: "2019-07-08",
           place: "南京",
           info: "个人创意抖音视频",
           time: '00:09'
         },
         {
-          url: "../../../static/fm/fengmian4.png",
-          src: "../../../static/video/04.mp4",
+          url: "./static/fm/fengmian4.png",
+          src: "./static/video/04.mp4",
           date: "2019-10-19",
           place: "上海",
           info: "上海外滩夜景",
           time: '00:15'
         },
          {
-          url: "../../../static/fm/fengmian5.png",
-          src: "../../../static/video/05.mp4",
+          url: "./static/fm/fengmian5.png",
+          src: "./static/video/05.mp4",
           date: "2019-05-18",
           place: "上海",
           info: "羽毛球锻炼",
           time: '00:25'
         },
         {
-          url: "../../../static/fm/fengmian6.png",
-          src: "../../../static/video/06.mp4",
+          url: "./static/fm/fengmian6.png",
+          src: "./static/video/06.mp4",
           date: "2019-09-02",
           place: "上海",
           info: "上海雨景",
           time: '00:17'
         },
         {
-          url: "../../../static/fm/fengmian7.png",
-          src: "../../../static/video/07.mp4",
+          url: "./static/fm/fengmian7.png",
+          src: "./static/video/07.mp4",
           date: "2019-07-06",
           place: "南京",
           info: "南京玄武湖大雨",
           time: '00:11'
         },
         {
-          url: "../../../static/fm/fengmian8.png",
-          src: "../../../static/video/08.mp4",
+          url: "./static/fm/fengmian8.png",
+          src: "./static/video/08.mp4",
           date: "2019-08-07",
           place: "上海",
           info: "上海火车",
           time: '00:15'
         },
         {
-          url: "../../../static/fm/fengmian9.png",
-          src: "../../../static/video/09.mp4",
+          url: "./static/fm/fengmian9.png",
+          src: "./static/video/09.mp4",
           date: "2019-08-29",
           place: "上海",
           info: "上海清晨彩虹",
           time: '00:10'
         },
         {
-          url: "../../../static/fm/fengmian10.png",
-          src: "../../../static/video/10.mp4",
+          url: "./static/fm/fengmian10.png",
+          src: "./static/video/10.mp4",
           date: "2019-09-08",
           place: "上海",
           info: "实验室楼下小猫",
@@ -236,7 +236,7 @@ export default {
       
       if (target.length === 0){//判断传进来的value是否有值，如果无值，就让动态电影数组等于全部电影数组
       debugger
-      console.log(target)
+      console.log("h",typeof(target))
         this.movieIndexChange = this.movieIndex
       }else{//否则根据传进来的选择选项
         this.movieIndexChange = []
