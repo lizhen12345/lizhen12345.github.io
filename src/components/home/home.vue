@@ -78,7 +78,7 @@ html,body,#app{
         position relative
         width :100%
         height :100%
-        min-width :1280px
+        min-width :960px
     .content-wrapper{
         position :absolute
         top :61px

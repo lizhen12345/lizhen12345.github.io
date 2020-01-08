@@ -8,7 +8,12 @@ import VueResource from 'vue-resource'
 import ElementUI from 'element-ui' //element-ui的全部组件
 import 'element-ui/lib/theme-chalk/index.css'//element-ui的css
 
-import './common/stylus/iconfont.styl'
+import './common/stylus/iconfont.styl'//引入点赞的图标
+
+import VideoPlayer from 'vue-video-player'
+require('video.js/dist/video-js.css')
+require('vue-video-player/src/custom-theme.css')  
+Vue.use(VideoPlayer)//引入播放器插件 vue-video-player
 
 Vue.use(ElementUI) //使用elementUI
 Vue.use(VueResource)
