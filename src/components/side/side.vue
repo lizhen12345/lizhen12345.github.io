@@ -58,7 +58,7 @@ export default {
           haveNext:true,
           content: [
             { name: "课程成绩", index: "score" },
-            { name: "培养方案提交", index: "3-1" }
+            { name: "文章收藏", index: "textCollection" }
           ]
         },
         {
@@ -72,9 +72,9 @@ export default {
           ]
         },
         {
-          name: "联系我",
+          name: "留言",
           icon: "el-icon-reading",
-          index: "5",
+          index: "comment",
           haveNext:false
         },
       ],

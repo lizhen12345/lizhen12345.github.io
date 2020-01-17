@@ -43,7 +43,15 @@ export default new Router({
         {
           path:'/movie',
           component :() => import('../components/movie/movie')
-        }
+        },
+        {
+          path:'/textCollection',
+          component :() => import('../components/textCollection/textCollection')
+        },
+        {
+          path:'/comment',
+          component :() => import('../components/comment/comment')
+        },
       ]
     }
   ]

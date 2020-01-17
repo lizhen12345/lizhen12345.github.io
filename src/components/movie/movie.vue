@@ -55,8 +55,8 @@ export default {
       radio :'',
       movieIndex: [
         {
-          url: "./static/fm/fengmian1.png",
-          src: "./static/video/01.mp4",
+          url: "/static/fm/fengmian1.png",
+          src: "/static/video/01.mp4",
           date: "2018-08-28",
           place: "临沂",
           info: "老家清晨天空",
@@ -249,11 +249,6 @@ export default {
         
         for (let j=0;j<this.movieIndex.length;j++){
           if (this.movieIndex[j].place === selectedCity){
-            let a= ''
-            let b=''
-             a = this.movieIndex[j].date+' 00:00:00'
-             b = a.replace(/-/g,'/')
-              console.log(Date.parse(b))
             this.movieIndexChange.push(this.movieIndex[j])
           }
         }

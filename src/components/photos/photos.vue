@@ -3,7 +3,7 @@
       <div class="small">
           <el-radio v-model="radio" label="Down" @change="dateDown">时间正序</el-radio>
           <el-radio v-model="radio" label="Up" @change="dateUp">时间倒序</el-radio>
-          <el-select v-model="value" placeholder="选择视频拍摄地" @change="selectItem" clearable >
+          <el-select v-model="value" placeholder="选择视频拍摄地" @change="selectItem" @clear='clearItem' clearable >
             <el-option
               v-for="item in computeCites"
               :key="item.value"
@@ -64,6 +64,7 @@ export default {
     return {
       radio :'',
       value :'',
+      photoIndexChange :[],
       photoIndex: [
         { url: "./static/img/01.jpg",date:"2018-10-04",place :'南京',info :'南京玄武湖' },
         { url: "./static/img/02.jpg" ,date:"2018-10-02",place :'苏州',info :'苏州树山'},
@@ -80,9 +81,12 @@ export default {
       type :false//控制点赞的样式
     };
   },
+  created(){
+      this.clearItem()//开始执行一次clearItem，保证渲染dom时有数据
+  },
   computed:{
       rowCompute(){
-        let rowSum = Math.ceil(this.photoIndex.length / 3);
+        let rowSum = Math.ceil(this.photoIndexChange.length / 3);
         let a = [];
         for (let i = 0; i < rowSum; i++) {
             a.push(i);
@@ -91,11 +95,11 @@ export default {
 
       },
       lastrowCompute(){//计算是否最后一行不满3个 并返回剩下的photos数据
-        let  zhengshu = Math.ceil(this.photoIndex.length / 3);
-        let yushu =this.photoIndex.length % 3 
+        let  zhengshu = Math.ceil(this.photoIndexChange.length / 3);
+        let yushu =this.photoIndexChange.length % 3 
         let a=[]
         if(yushu!=0){
-            a = this.photoIndex.slice(3*zhengshu)
+            a = this.photoIndexChange.slice(3*zhengshu)
             
         }else{
           
@@ -103,11 +107,32 @@ export default {
        
         return a
       },
+    computeCites(){//返回视频中包含哪几个视频拍摄地
+      
+        let arr = []
+        for (let i= 0;i<this.photoIndex.length;i++){
+          if (arr.indexOf(this.photoIndex[i].place)==-1){
+            arr.push(this.photoIndex[i].place)
+          }
+        }
+        let obj =[]
+        
+        for (let i =0;i<arr.length;i++){
+          let oneObj = new Object()//每次新建一个对象，才能避免向数组中push对象被覆盖问题
+          oneObj.value = '选项'+(i+1)
+          oneObj.city = arr[i]
+          
+          obj.push(oneObj)
+         
+        }
+        console.log(obj)
+        return obj
+      }
   },
   methods:{
     colCompute(index){//计算每一行中的元素
         let arr = []
-        arr = this.photoIndex.slice(3*index,3*index+3)
+        arr = this.photoIndexChange.slice(3*index,3*index+3)
         
         return arr
     },
@@ -124,9 +149,46 @@ export default {
           debugger
           this.type = !this.type
       },
-      dateDown(){},
-      dateUp(){},
-      selectItem(){}
+      dateDown(){
+          this.photoIndexChange.sort(function(a,b){
+                let date1 = a.date + ' 00:00:00'
+                let date2 = b.date + ' 00:00:00'
+                let seconds1 = Date.parse(date1)
+                let seconds2 = Date.parse(date2)
+                return seconds1 - seconds2
+          })
+      },
+      dateUp(){
+          this.photoIndexChange.sort(function(a,b){
+                let date1 = a.date + ' 00:00:00'
+                let date2 = b.date + ' 00:00:00'
+                let seconds1 = Date.parse(date1)
+                let seconds2 = Date.parse(date2)
+                return seconds2 - seconds1
+          })
+      },
+      
+      selectItem(target){
+          console.log(target)
+          let selectedCity =''
+          this.photoIndexChange = []
+          for (let i=0;i<this.computeCites.length;i++){
+              if (this.computeCites[i].value ===target){
+                   selectedCity = this.computeCites[i].city
+                  console.log(selectedCity)
+              }
+          }
+          for (let j=0;j<this.photoIndex.length;j++){
+              if (this.photoIndex[j].place === selectedCity){
+                  this.photoIndexChange.push(this.photoIndex[j])
+              }
+          }
+          console.log(this.photoIndexChange)
+      },
+      clearItem(){  //      清空选择的视频拍摄地时触发的函数
+            this.value = ''
+            this.photoIndexChange = this.photoIndex
+      }
   },
   components:{
       favorite
