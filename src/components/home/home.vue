@@ -9,6 +9,16 @@
            </keep-alive>
        </div>
     </div>
+    <transition name="el-zoom-in-left">
+    <div class="music-wrapper" v-show='musicFlag'>
+        <aplayer :music="videoUpload.music" :list='videoUpload.list' listFolded float></aplayer>
+        <span class="close-music el-icon-close" @click="close"></span>
+    </div>
+    </transition>
+    <div class="music-wrapper">
+        <span class="el-icon-arrow-right" @click="open"></span>
+    </div>
+    
 </div>
 
 </template>
@@ -16,10 +26,34 @@
 <script type='text/ecmascript-6'>
 import header from '../header/header'
 import side from '../side/side'
+import aplayer from "vue-aplayer";
 const ERR_OK = 0
 export default{
     data(){
         return{
+            musicFlag :true,
+            videoUpload: {
+                progress: false,
+                progressPercent: 0,
+                successPercent: 0,
+                music: {
+                title: "阿四 - 像我这样的人（Cover：毛不易）",
+                author: "",
+                url: "./static/song/阿四 - 像我这样的人（Cover：毛不易）.mp3"
+                },
+                list: [
+                {
+                    title: "阿四 - 像我这样的人（Cover：毛不易）",
+                    author: "",
+                    url: "./static/song/阿四 - 像我这样的人（Cover：毛不易）.mp3"
+                },
+                {
+                    title: "王大毛 - 去年夏天",
+                    author: "",
+                    url: "./static/song/王大毛 - 去年夏天.mp3"
+                }
+                ]
+            },
             tag :'',//将其传递给header显示
             weizhi:'',
             base :[]
@@ -59,11 +93,18 @@ export default{
 
             this.$refs.header.positionChange(target[1])
             this.$refs.side.Open(target[0])
+        },
+        close(){
+            this.musicFlag =false//将音乐播放器关掉
+        },
+        open(){
+            this.musicFlag = true
         }
     },
     components:{
         vheader:header,
-        side
+        side,
+        aplayer
     }
 }
 </script>
@@ -80,21 +121,39 @@ html,body,#app{
         width :100%
         height :100%
         min-width :960px
-    .content-wrapper{
-        position :absolute
-        top :61px
-        left :201px
-        right :0
-        bottom :0
-        overflow hidden
-        .content{
-            width :100%
-            height :100%
-            overflow auto
-            background :rgb(244,247,249)
-           
+        .content-wrapper{
+            position :absolute
+            top :61px
+            left :201px
+            right :0
+            bottom :0
+            overflow hidden
+            .content{
+                width :100%
+                height :100%
+                overflow auto
+                background :rgb(244,247,249)
+            
+            }
         }
-    }
+        .music-wrapper{
+            position absolute
+            width :300px
+            bottom :50px
+            left  :0px
+            .close-music{
+                position absolute
+                font-size :22px
+                top :2px
+                right :2px
+                z-index :40
+            }
+            .el-icon-arrow-right{
+                margin-bottom :20px
+                font-size 32px
+                font-weight 700
+            }
+        }
 }
 }
 </style>

@@ -1,8 +1,8 @@
 <template>
   <div class="side-wrapper">
-    <div class="top-wrapper">
+    <!-- <div class="top-wrapper">
       <img src="./u=3012947088,893937169&fm=26&gp=0.jpg" height="60px" width="150px" />
-    </div>
+    </div> -->
     <el-menu class="side" :default-active="nowOpen" unique-opened router @select="handleSelect">
       <template v-for="(item,index) in danghang">
         <template v-if="item.content">
@@ -150,6 +150,7 @@ export default {
   }
 
   .side {
+    margin-top :60px
     border: none;
   }
 }

@@ -5,7 +5,6 @@
         <p class="miaoshu">{{tag}}</p>
       </div>
       <div class="left-wrapper">
-        <span class="el-icon-bell"></span>
         <span class="el-icon-lock" @click="passwordOpen()"></span>
         <span class="el-icon-switch-button" @click="close"></span>
       </div>
@@ -108,6 +107,10 @@ html, body {
     height: 100%;
     display: flex;
     align-items: center;
+    .miaoshu{
+      font-size :14px
+      color #707070
+    }
   }
 }
 

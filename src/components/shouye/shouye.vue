@@ -1,5 +1,9 @@
 <template>
   <div class="shouye-wrapper">
+    <div class="erweima-wrapper">
+      <img v-show="qqShow" src="./qq.jpg" width="270px" height="370px">
+      <img v-show="wechatShow" src="./wechat.jpg" width="215px" height="215px">
+    </div>
     <div class="right-wrapper">
       <div class="top-wrapper">
         <div class="img-wrapper">
@@ -23,9 +27,35 @@
           <span class="button" @click="collect">个人简历</span>
           <span class="button" @click="score">课程成绩</span>
         </div>
-        <span class="el-icon-edit-outline"></span>
+        <!-- <span class="el-icon-edit-outline"></span> -->
       </div>
-      <div class="middle-wrapper">
+      <div class="contact-wrapper">
+        <p class="contactme">Contact Me</p>
+        <ul>
+          <li class="contact-li">
+            <span class="qq">QQ:1259744231</span>
+            <span class="erweima" @click="openqq">点击展示二维码</span>
+          </li>
+          <li class="contact-li">
+            <span class="qq">微信：</span>
+            <span class="erweima" @click="openwechat">点击展示二维码</span>
+          </li>
+          <li class="contact-li">
+            <span class="email">Email:1259744231@qq.com</span>
+          </li>
+        </ul>
+      </div>
+      <!-- <div class="shouye-middle">
+        <div class="block">
+          
+          <el-carousel height="150px" >
+            <el-carousel-item v-for="item in source" :key="item">
+              <img :src="item" width="280px" height="150px">
+            </el-carousel-item>
+          </el-carousel>
+        </div>
+    </div> -->
+      <!-- <div class="middle-wrapper">
         <div class="middle-top">
           <el-dropdown trigger="click" class="caidan">
             <span class="el-dropdown-link" v-if="showFlag">
@@ -86,31 +116,36 @@
         <div class="bottom-title">学业预警</div>
         <div class="bottom-middle">
           <ul class="ul-wrapper">
-              <li class="box" v-for="(item,index) in yujing" :key="index">
-                  <span :class="item.icon"></span><br>
-                  <span class="text">{{item.name}}</span>
-              </li>
+            <li class="box" v-for="(item,index) in yujing" :key="index">
+              <span :class="item.icon"></span>
+              <br />
+              <span class="text">{{item.name}}</span>
+            </li>
           </ul>
         </div>
         <div class="bottom-bottom">
-            <ul>
-                <li class="level" v-for="(item,index) in level" :key="index">
-                    <span class="frist">{{item.dengji}}级预警:</span>
-                    <span class="second">{{item.content}}</span>
-                </li>
-            </ul>
+          <ul>
+            <li class="level" v-for="(item,index) in level" :key="index">
+              <span class="frist">{{item.dengji}}级预警:</span>
+              <span class="second">{{item.content}}</span>
+            </li>
+          </ul>
         </div>
-      </div>
+      </div> -->
+
     </div>
   </div>
 </template>
 
 <script type='text/ecmascript-6'>
 import circleProgress from "../common/circle-progress";
-
+import aplayer from "vue-aplayer";
 export default {
   data() {
     return {
+      qqShow :false,
+      wechatShow :false,
+      source:['./static/zoumadeng/01 (1).jpg','./static/zoumadeng/01 (2).jpg','./static/zoumadeng/01 (3).jpg','./static/zoumadeng/01 (4).jpg'],
       message: {
         name: "林振",
         des: ["全日制学术硕士", "2018"]
@@ -141,12 +176,11 @@ export default {
         { name: "开题", icon: "el-icon-thumb" },
         { name: "答辩", icon: "el-icon-cpu" }
       ],
-      level :[{dengji:'四',content:'[开题:应开题日期:2019-08-18]'}]
+      level: [{ dengji: "四", content: "[开题:应开题日期:2019-08-18]" }]
     };
   },
   computed: {
     percentCompute2() {
-      
       let percent = [];
       this.classes.forEach(item => {
         let a = Number(item.success);
@@ -159,6 +193,18 @@ export default {
     }
   },
   methods: {
+    openqq(){
+      this.qqShow = !this.qqShow
+      if (this.wechatShow == true){
+        this.wechatShow = false
+      }
+    },
+    openwechat(){
+      this.wechatShow = !this.wechatShow
+      if( this.qqShow == true){
+        this.qqShow = false
+      }
+    },
     percentCompute1(index) {
       let item = this.xuefen[index];
       let a = Number(item.success);
@@ -172,24 +218,24 @@ export default {
     change2() {
       this.showFlag = false;
     },
-    collect(){
-      this.$router.push('/message')
-      let target=[]
-      target[0]='message'
-      target[1] = '当前您的位置在：个人管理>个人信息管理'
-      this.$emit('recTarget',target)
+    collect() {
+      this.$router.push("/message");
+      let target = [];
+      target[0] = "message";
+      target[1] = "当前您的位置在：个人管理>个人信息管理";
+      this.$emit("recTarget", target);
     },
-    score(){
-     
-      this.$router.push('/score')
-      let target=[]
-      target[0]='score'
-      target[1] = '当前您的位置在：培养管理>课程成绩'
-      this.$emit('recTarget',target)
+    score() {
+      this.$router.push("/score");
+      let target = [];
+      target[0] = "score";
+      target[1] = "当前您的位置在：培养管理>课程成绩";
+      this.$emit("recTarget", target);
     }
   },
   components: {
-    circleProgress
+    circleProgress,
+
   }
 };
 </script>
@@ -198,12 +244,23 @@ export default {
 .shouye-wrapper {
   position: relative;
   height: 100%;
-  overflow :hidden
+  overflow: hidden;
+  .erweima-wrapper{
+    position absolute
+    top :200px
+    left :200px
+    
+  }
+  .shouye-middle{
+
+    paddding :10px
+    background :#fff
+  }
   .right-wrapper {
     position: absolute;
-    overflow :auto
+    overflow: auto;
     width: 440px;
-    height :100%
+    height: 100%;
     top: 0;
     right: -15px;
     background: rgb(255, 255, 255);
@@ -226,9 +283,10 @@ export default {
       .miaoshu-wrapper {
         position: absolute;
         left: 130px;
-        top: 0px;
+        top:0px;
         width: 290px;
-        margin-top :20px
+        padding-top: 0px;
+
         .title {
           font-size: 16px;
 
@@ -286,55 +344,83 @@ export default {
       border: 1px solid #eee;
       border-radius: 20px;
     }
-    .bottom-wrapper{
-        padding :20px
-        .bottom-title{
-            margin-bottom :20px
+
+    .bottom-wrapper {
+      padding: 20px;
+
+      .bottom-title {
+        margin-bottom: 20px;
+        font-size: 16px;
+        color: #24292B;
+        font-weight: 700;
+      }
+
+      .bottom-middle {
+        .ul-wrapper {
+          padding: 0 0 16px 0;
+          border-bottom: 1px solid rgba(229, 229, 229, 1);
+
+          .box {
+            display: inline-block;
+            list-style-type: none;
+            width: 19.7%;
+            text-align: center;
+            border-right: 1px solid rgba(229, 229, 229, 1);
+            color: rgb(77, 200, 255);
             font-size: 16px;
-            color: #24292B;
-            font-weight: 700;
-        }
-        .bottom-middle{
-            .ul-wrapper{
-                padding :0 0 16px 0
-                border-bottom :1px solid rgba(229,229,229,1)
-                .box{
-                    display :inline-block
-                    list-style-type :none
-                    width :19.7%
-                    text-align :center
-                    border-right :1px solid rgba(229,229,229,1)
-                    color :rgb(77,200,255)
-                    font-size :16px
-                    &:last-child{
-                        border-right :none
-                    }
-                    .text{
-                        padding-top :12px
-                    }
-                }
+
+            &:last-child {
+              border-right: none;
             }
-        }
-        .bottom-bottom{
-            ul{
-                padding-left :0
+
+            .text {
+              padding-top: 12px;
             }
-            .level{
-                padding-left :5px
-                font-size :0
-                list-style-type :none
-                border-left :5px solid rgba(77,200,255,1)
-                .frist{
-                    margin-right :2px
-                    font-size :12px
-                    color :#77909d
-                }
-                .second{
-                    font-size :12px
-                    color :#333
-                }
-            }
+          }
         }
+      }
+
+      .bottom-bottom {
+        ul {
+          padding-left: 0;
+        }
+
+        .level {
+          padding-left: 5px;
+          font-size: 0;
+          list-style-type: none;
+          border-left: 5px solid rgba(77, 200, 255, 1);
+
+          .frist {
+            margin-right: 2px;
+            font-size: 12px;
+            color: #77909d;
+          }
+
+          .second {
+            font-size: 12px;
+            color: #333;
+          }
+        }
+      }
+    }
+    .contact-wrapper{
+      padding :20px
+      .contactme{
+        margin :10px 0
+        color :rgb(255,105,180)
+        font-size :24px 
+      }
+      .contact-li{
+        padding :10px
+        font-size :24px
+        .qq{
+          color :rgb(178,34,34)
+        }
+        .email{
+          color :rgb(205,133,63)
+        }
+      }
     }
   }
 
@@ -400,6 +486,13 @@ export default {
         }
       }
     }
+  }
+  .erweima{
+    display inline-block
+    font-size :16px
+    padding :4px 10px
+    border: 1px solid rgb(178,34,34);
+    border-radius: 20px;
   }
 }
 </style>

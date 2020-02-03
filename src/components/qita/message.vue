@@ -59,13 +59,109 @@
 
 <script type='text/ecmascript-6'>
 export default {
-  props: {
-    base: {
-      type: Array
-    }
-  },
+
   data() {
     return {
+      
+     base: [
+        {
+            name: "学号",
+            content: 182201180
+        },
+        {
+            name: "国籍",
+            content: "中国"
+        },
+        {
+            name: "家庭住址",
+            content: "山东省临沂市平邑县铜石镇"
+        },
+        {
+          name: "学号",
+            content: 182201180
+        },
+        {
+            name: "民族",
+            content: "汉族"
+        },
+        {
+            name: "本科学校",
+            content: "青岛大学"
+        },
+        {
+            name: "学号",
+            content: 182201180
+        },
+        {
+            name: "政治面貌",
+            content: "中国共产主义青年团员"
+        },
+        {
+            name: "婚姻状况",
+            content: "未婚"
+        },
+        {
+            name: "学号",
+            content: 182201180
+        },
+        {
+            name: "身高",
+            content: "187cm"
+        },
+        {
+            name: "体重",
+            content: "70kg"
+        },
+        {
+            name: "xingming",
+            content: 182201180
+        },
+        {
+            name: "爱好",
+            content: "无"
+        },
+        {
+            name: "现就读学校",
+            content: "上海师范大学"
+        },
+        {
+            name: "姓名",
+            content: "林振"
+        },
+        {
+            name: "学号",
+            content: 182201180
+        },
+        {
+            name: "性别",
+            content: "男"
+        },
+        {
+            name: "出生日期",
+            content: "1996-04-18"
+        },
+        {
+            name: "联系方式",
+            content: 19802151553
+        },
+        {
+            name: "邮箱",
+            content: "125974423@qq.com"
+        },
+        {
+            name: "家庭电话",
+            content: "无"
+        },
+        {
+            name: "宿舍住址",
+            content: "上师大4号楼219"
+        },
+        {
+            name: "培养类别",
+            content: "非定向"
+        }
+    ],
+
       aca: [
         { name: "年级", content: 2018 },
         { name: "入学日期", content: "2018-09-01" },

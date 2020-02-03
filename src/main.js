@@ -11,6 +11,9 @@ import 'element-ui/lib/theme-chalk/index.css'//element-ui的css
 import './common/stylus/iconfont.styl'//引入点赞的图标
 
 import VideoPlayer from 'vue-video-player'
+import vueAplayer from 'vue-aplayer'
+ 
+Vue.use(vueAplayer)
 require('video.js/dist/video-js.css')
 require('vue-video-player/src/custom-theme.css')  
 Vue.use(VideoPlayer)//引入播放器插件 vue-video-player
