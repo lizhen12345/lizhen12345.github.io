@@ -6,28 +6,30 @@
           <span class="title">基本信息</span>
           <span class="close" @click="closeSpread">-{{spread}}</span>
         </div>
+     
         <div class="base-content" v-show="closeOrSpread">
-          <div class="img">
-            <img src="./linzhen.jpg" width="144px" height="210px" />
-          </div>
-          <table>
-            <tr v-for="(item,index) in rowCompute" :key="index">
-              <td>
-                <span class="name">{{base[3*index].name}}:</span>
-                <span class="detail">{{base[3*index].content}}</span>
-              </td>
+            <div class="img">
+              <img src="./linzhen.jpg" width="144px" height="210px" />
+            </div>
+            <table>
+              <tr v-for="(item,index) in rowCompute" :key="index">
+                <td>
+                  <span class="name">{{base[3*index].name}}:</span>
+                  <span class="detail">{{base[3*index].content}}</span>
+                </td>
 
-              <td>
-                <span class="name">{{base[3*index+1].name}}:</span>
-                <span class="detail">{{base[3*index+1].content}}</span>
-              </td>
-              <td>
-                <span class="name">{{base[3*index+2].name}}:</span>
-                <span class="detail">{{base[3*index+2].content}}</span>
-              </td>
-            </tr>
-          </table>
+                <td>
+                  <span class="name">{{base[3*index+1].name}}:</span>
+                  <span class="detail">{{base[3*index+1].content}}</span>
+                </td>
+                <td>
+                  <span class="name">{{base[3*index+2].name}}:</span>
+                  <span class="detail">{{base[3*index+2].content}}</span>
+                </td>
+              </tr>
+            </table>
         </div>
+       
         <div class="aca-title">
           <span class="title">学业信息</span>
           <span class="close" @click="closeSpread1">-{{spread1}}</span>

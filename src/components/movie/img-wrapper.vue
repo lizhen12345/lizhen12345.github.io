@@ -2,7 +2,11 @@
   <div>
     <div class="img-wrapper1" @mouseenter="enter" @mouseleave="leave" @click="openMovie()">
       <div class="img-father">
-        <img :src="oneMovie.url" class="photo" />
+        <el-image :src="oneMovie.url" class="photo">
+            <div slot="placeholder" class="image-slot">
+             加载中<span class="dot">...</span>
+             </div>
+        </el-image>
         <div class="watch-wrapper"  v-show="showFlag">
           <span class="iconfont icon-guankan"></span>
         </div>

@@ -1,8 +1,8 @@
 <template>
   <div class="shouye-wrapper">
     <div class="erweima-wrapper">
-      <img v-show="qqShow" src="./qq.jpg" width="270px" height="370px">
-      <img v-show="wechatShow" src="./wechat.jpg" width="215px" height="215px">
+         <img v-show="qqShow" src="./qq.jpg" width="270px" height="370px">
+          <img v-show="wechatShow" src="./wechat.jpg" width="215px" height="215px">
     </div>
     <div class="right-wrapper">
       <div class="top-wrapper">
