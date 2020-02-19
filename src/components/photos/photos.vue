@@ -15,7 +15,11 @@
         <el-row class="row" :gutter="20" v-for="(item,index) in rowCompute" :key="index" >
             <el-col class="col" :span="8" v-for="(item1,index1) in colCompute(index)" :key="index1">
                 <div class="img-wrapper">
-                    <img :src="item1.url" class="photo">
+                        <el-image :src="item1.url" class="photo">
+                            <div slot="placeholder" class="image-slot">
+                            加载中<span class="dot">...</span>
+                            </div>
+                         </el-image>
                 </div>
                 <div class="detail">
                     <p class="date">拍摄日期：{{item1.date}}</p>
