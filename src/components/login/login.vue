@@ -3,8 +3,8 @@
     <div class="main">
         <h1 class="text">后台管理系统</h1>
         <div v-if="zhuceFlag">
-            <input type="text" id="username"><br>
-            <input type="passowrd" id="password"><br>
+            <input type="text" id="username" placeholder="用户名"><br>
+            <input type="passowrd" id="password" placeholder="密码"><br>
             <button id="regist" @click="register">注册</button>
             <button id="fanhui" @click="fanhui">返回</button>
         </div>
@@ -144,22 +144,24 @@ export default{
 
 <style lang='stylus' rel='stylesheet/stylus'>
 #username{
+    padding: 5px 10px
     width :60%
     height :20px
     margin-left :60px
 }
 #password{
+    padding :5px 10px
     width :60%
     height :20px
     margin :10px 0 0 60px
 }
 #regist{
-    margin :10px 0 0 80px
+    margin :10px 0 0 90px
     width :60px
     height :30px
 }
 #fanhui{
-    margin :10px 0 0 40px
+    margin :10px 0 0 50px
     width :60px
     height :30px
 }
