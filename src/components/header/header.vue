@@ -40,7 +40,6 @@ export default {
 // },
   methods: {
     close() {
-        console.log(this.tag)
       this.$confirm("你确定要退出本次登录吗", "提示", {
         confirmButtonText: "退出",
         cancelButtonText: "取消",
@@ -60,7 +59,7 @@ export default {
         });
     },
     positionChange(target){
-      
+        
         this.tag = target
     },
     passwordOpen(){

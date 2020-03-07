@@ -24,12 +24,12 @@ Vue.config.productionTip = false
 
 router.beforeEach((to,from,next) => {//路由跳转的钩子函数
 
-  const role = localStorage.getItem('ms_username')
+  const role = localStorage.getItem('nowName')
 
   // console.log(role)
   if (!role && to.path !== '/login'){
     
-    console.log('a',to.path)
+
     next('/login')
   }else{
     next()

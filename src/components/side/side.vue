@@ -3,6 +3,9 @@
     <!-- <div class="top-wrapper">
       <img src="./u=3012947088,893937169&fm=26&gp=0.jpg" height="60px" width="150px" />
     </div> -->
+    <div class="nameId">
+      <p class="nowname">{{nameid}},您好</p>
+    </div>
     <el-menu class="side" :default-active="nowOpen" unique-opened router @select="handleSelect">
       <template v-for="(item,index) in danghang">
         <template v-if="item.content">
@@ -79,8 +82,13 @@ export default {
         },
       ],
       tag: "", //标签页上显示什么
-      nowOpen: "shouye" //现在具体打开的是第几个侧边栏
+      nowOpen: "shouye" ,//现在具体打开的是第几个侧边栏
+      nameid :''
     };
+  },
+  created(){
+    this.nameid = window.localStorage.getItem('nowName')
+    console.log(this.nameid)
   },
   mounted() {
     this.handleSelect();
@@ -142,7 +150,10 @@ export default {
   height: 100%;
   z-index: 0;
   border-right: solid 1px rgba(229, 229, 229, 1);
-
+  .nameId{
+    text-align :center
+    color :blue
+  }
   .top-wrapper {
     display: flex;
     align-items: center;
@@ -150,7 +161,7 @@ export default {
   }
 
   .side {
-    margin-top :60px
+    margin-top :20px
     border: none;
   }
 }
